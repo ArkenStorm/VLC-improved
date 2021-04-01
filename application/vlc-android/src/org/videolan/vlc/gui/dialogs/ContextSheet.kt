@@ -117,6 +117,8 @@ class ContextSheet : VLCBottomSheetDialogFragment() {
         if (flags and CTX_MARK_AS_PLAYED != 0L) add(Simple(CTX_MARK_AS_PLAYED, getString(R.string.mark_as_played), R.drawable.ic_ctx_mark_as_played))
         if (flags and CTX_MARK_ALL_AS_PLAYED != 0L) add(Simple(CTX_MARK_ALL_AS_PLAYED, getString(R.string.mark_all_as_played), R.drawable.ic_ctx_mark_all_as_played))
         if (flags and CTX_GO_TO_FOLDER != 0L) add(Simple(CTX_GO_TO_FOLDER, getString(R.string.go_to_folder), R.drawable.ic_ctx_folder))
+        if (flags and CTX_SNOOZE_SONG != 0L) add(Simple(CTX_SNOOZE_SONG, getString(R.string.snooze_song), R.drawable.ic_sleep))
+        if (flags and CTX_HIDE_SONG != 0L) add(Simple(CTX_HIDE_SONG, getString(R.string.hide_song), R.drawable.ic_hide_song))
     }
 
     inner class ContextAdapter : RecyclerView.Adapter<ContextAdapter.ViewHolder>() {

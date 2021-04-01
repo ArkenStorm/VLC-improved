@@ -208,7 +208,6 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
     private val ctxReceiver: CtxActionReceiver = object : CtxActionReceiver {
         override fun onCtxAction(position: Int, option: Long) {
             if (position in 0 until playlistAdapter.itemCount) when (option) {
-                CTX_SET_RINGTONE -> activity?.setRingtone(playlistAdapter.getItem(position))
                 CTX_ADD_TO_PLAYLIST -> {
                     val mw = playlistAdapter.getItem(position)
                     requireActivity().addToPlaylist(listOf(mw))
@@ -222,6 +221,8 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
                 }
                 CTX_STOP_AFTER_THIS -> playlistModel.stopAfter(position)
                 CTX_INFORMATION -> showInfoDialog(playlistAdapter.getItem(position))
+                // CTX_SNOOZE_SONG -> // fixme - add pop up
+                // CTX_HIDE_SONG -> // fixme - add functionality
                 CTX_SHARE -> lifecycleScope.launch { (requireActivity() as AppCompatActivity).share(playlistAdapter.getItem(position)) }
             }
         }
@@ -236,8 +237,9 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
     override fun onPopupMenu(view: View, position: Int, item: MediaWrapper?) {
         val activity = activity
         if (activity === null || position >= playlistAdapter.itemCount) return
-        var flags = CTX_REMOVE_FROM_PLAYLIST or CTX_STOP_AFTER_THIS or CTX_INFORMATION
-        if (item?.uri?.scheme != "content") flags = flags or CTX_ADD_TO_PLAYLIST or CTX_SHARE or CTX_SET_RINGTONE
+        // fixme - put here or on next line?
+        var flags = CTX_REMOVE_FROM_PLAYLIST or CTX_STOP_AFTER_THIS or CTX_INFORMATION or CTX_SNOOZE_SONG or CTX_HIDE_SONG
+        if (item?.uri?.scheme != "content") flags = flags or CTX_ADD_TO_PLAYLIST or CTX_SHARE
         showContext(activity, ctxReceiver, position, item?.title ?: "", flags)
     }
 

@@ -29,7 +29,7 @@ const val EXTRA_PARSE = "extra_parse"
 const val EXTRA_TARGET = "extra_parse"
 const val EXTRA_REMOVE_DEVICE = "extra_remove_device"
 
-//UI Navigation
+// UI Navigation
 const val ID_VIDEO = "video"
 const val ID_VIDEO_FOLDERS = "video_folders"
 const val ID_AUDIO = "audio"
@@ -110,7 +110,7 @@ const val KEY_CURRENT_MEDIA = "current_media"
 // Info Activity
 const val TAG_ITEM = "ML_ITEM"
 
-//TV
+// TV
 const val HEADER_VIDEO = 0L
 const val HEADER_CATEGORIES = 1L
 const val HEADER_HISTORY = 2L
@@ -204,6 +204,9 @@ const val CTX_GROUP_SIMILAR = 1L shl 35
 const val CTX_MARK_AS_PLAYED = 1L shl 36
 const val CTX_MARK_ALL_AS_PLAYED = 1L shl 37
 const val CTX_GO_TO_FOLDER = 1L shl 38
+// Used in AudioPlayer.kt
+const val CTX_SNOOZE_SONG = 1L shl 39
+const val CTX_HIDE_SONG = 1L shl 40
 
 const val CTX_VIDEO_FLAGS = CTX_APPEND or CTX_PLAY_NEXT or CTX_DELETE or CTX_DOWNLOAD_SUBTITLES or CTX_INFORMATION or CTX_PLAY or CTX_PLAY_ALL or CTX_PLAY_AS_AUDIO or CTX_ADD_TO_PLAYLIST or CTX_SHARE or CTX_MARK_AS_PLAYED
 const val CTX_TRACK_FLAGS = CTX_APPEND or CTX_PLAY_NEXT or CTX_DELETE or CTX_INFORMATION or CTX_PLAY_ALL or CTX_ADD_TO_PLAYLIST or CTX_SET_RINGTONE or CTX_SHARE or CTX_GO_TO_FOLDER
@@ -213,14 +216,14 @@ const val CTX_PLAYLIST_ITEM_FLAGS = CTX_APPEND or CTX_PLAY_NEXT or CTX_ADD_TO_PL
 const val CTX_VIDEO_GROUP_FLAGS = CTX_APPEND or CTX_MARK_ALL_AS_PLAYED
 const val CTX_FOLDER_FLAGS = CTX_PLAY or CTX_APPEND or CTX_ADD_TO_PLAYLIST or CTX_MARK_ALL_AS_PLAYED
 
-//Moviepedia
+// Moviepedia
 const val MOVIEPEDIA_MEDIA: String = "moviepedia_media"
 
 // Database
 const val TYPE_NETWORK_FAV = 0
 const val TYPE_LOCAL_FAV = 1
 
-//Crash reporting
+// Crash reporting
 const val CRASH_ML_CTX = "crash_ml_ctx"
 const val CRASH_ML_MSG = "crash_ml_msg"
 
