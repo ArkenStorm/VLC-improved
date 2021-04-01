@@ -106,7 +106,7 @@ class ContextSheet : VLCBottomSheetDialogFragment() {
         if (flags and CTX_COPY != 0L) add(Simple(CTX_COPY, getString(R.string.copy_to_clipboard), R.drawable.ic_ctx_link))
         if (flags and CTX_DELETE != 0L) add(Simple(CTX_DELETE, getString(R.string.delete), R.drawable.ic_ctx_delete))
         if (flags and CTX_SNOOZE_SONG != 0L) add(Simple(CTX_SNOOZE_SONG, getString(R.string.snooze_song), R.drawable.ic_sleep))
-        if (flags and CTX_HIDE_SONG != 0L) add(Simple(CTX_HIDE_SONG, getString(R.string.hide_song), R.drawable.ic_hide_song))
+        if (flags and CTX_ARCHIVE_SONG != 0L) add(Simple(CTX_ARCHIVE_SONG, getString(R.string.archive_song), R.drawable.ic_archive_song))
         if (flags and CTX_SHARE != 0L) add(Simple(CTX_SHARE, getString(R.string.share), R.drawable.ic_ctx_share))
         if (flags and CTX_FIND_METADATA != 0L) add(Simple(CTX_FIND_METADATA, getString(R.string.find_metadata), R.drawable.ic_ctx_delete))
         if (flags and CTX_ADD_FOLDER_PLAYLIST != 0L) add(Simple(CTX_ADD_FOLDER_PLAYLIST, getString(R.string.this_folder), R.drawable.ic_ctx_add_to_playlist))

@@ -21,7 +21,6 @@
 package org.videolan.vlc.gui.audio
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -51,7 +50,6 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.conflate
-import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.videolan.medialibrary.Tools
 import org.videolan.medialibrary.interfaces.media.MediaWrapper
@@ -64,7 +62,6 @@ import org.videolan.vlc.gui.AudioPlayerContainerActivity
 import org.videolan.vlc.gui.InfoActivity
 import org.videolan.vlc.gui.dialogs.CtxActionReceiver
 import org.videolan.vlc.gui.dialogs.showContext
-import org.videolan.vlc.gui.helpers.AudioUtil.setRingtone
 import org.videolan.vlc.gui.helpers.PlayerOptionsDelegate
 import org.videolan.vlc.gui.helpers.SwipeDragItemTouchHelperCallback
 import org.videolan.vlc.gui.helpers.UiTools
@@ -222,7 +219,7 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
                 CTX_STOP_AFTER_THIS -> playlistModel.stopAfter(position)
                 CTX_INFORMATION -> showInfoDialog(playlistAdapter.getItem(position))
                 // CTX_SNOOZE_SONG -> // fixme - add pop up
-                // CTX_HIDE_SONG -> // fixme - add functionality
+                // CTX_ARCHIVE_SONG -> // fixme - add functionality
                 CTX_SHARE -> lifecycleScope.launch { (requireActivity() as AppCompatActivity).share(playlistAdapter.getItem(position)) }
             }
         }
@@ -238,7 +235,7 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
         val activity = activity
         if (activity === null || position >= playlistAdapter.itemCount) return
         // fixme - put here or on next line?
-        var flags = CTX_REMOVE_FROM_PLAYLIST or CTX_STOP_AFTER_THIS or CTX_INFORMATION or CTX_SNOOZE_SONG or CTX_HIDE_SONG
+        var flags = CTX_REMOVE_FROM_PLAYLIST or CTX_STOP_AFTER_THIS or CTX_INFORMATION or CTX_SNOOZE_SONG or CTX_ARCHIVE_SONG
         if (item?.uri?.scheme != "content") flags = flags or CTX_ADD_TO_PLAYLIST or CTX_SHARE
         showContext(activity, ctxReceiver, position, item?.title ?: "", flags)
     }

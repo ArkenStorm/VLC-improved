@@ -792,6 +792,6 @@
 
     <!-- fixme - wording for snooze/hide song -->
     <string name="snooze_song">Snooze song</string>
-    <string name="hide_song">Hide song</string>
+    <string name="archive_song">Archive song</string>
 
 </resources>
