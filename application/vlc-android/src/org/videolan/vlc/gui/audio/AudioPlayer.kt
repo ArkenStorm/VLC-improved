@@ -219,12 +219,18 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
                 }
                 CTX_STOP_AFTER_THIS -> playlistModel.stopAfter(position)
                 CTX_INFORMATION -> showInfoDialog(playlistAdapter.getItem(position))
-                CTX_SNOOZE_SONG -> { // fixme - add pop up
+                // fixme - improve functionality
+                CTX_SNOOZE_SONG -> {
                     val mw = playlistAdapter.getItem(position)
                     val newFragment = SnoozeSongDialog.newInstance()
                     newFragment.show(requireActivity().supportFragmentManager, "time")
                 }
-                // CTX_ARCHIVE_SONG -> // fixme - add functionality
+                CTX_ARCHIVE_SONG -> {
+                    val mw = playlistAdapter.getItem(position)
+                    val cancelAction = Runnable { playlistModel.insertMedia(position, mw) }
+                    val message = String.format(getString(R.string.archive_item), mw.title)
+                    UiTools.snackerWithCancel(requireActivity(), message, null, cancelAction)
+                }
                 CTX_SHARE -> lifecycleScope.launch { (requireActivity() as AppCompatActivity).share(playlistAdapter.getItem(position)) }
             }
         }

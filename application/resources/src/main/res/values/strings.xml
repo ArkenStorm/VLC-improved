@@ -3,7 +3,7 @@
 
     <!-- Main VLC Interface -->
     <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
+    <string name="cancel">Undo</string>
     <string name="app_name" translatable="false">VLC</string>
     <string name="other">Other</string>
     <string name="sortby">Sort by…</string>
@@ -793,5 +793,6 @@
     <string name="snooze_song">Snooze song</string>
     <string name="archive_song">Archive song</string>
     <string name="snooze_time">Snooze song for...</string>
+    <string name="archive_item">%1$s has been archived from playlist</string>
 
 </resources>
