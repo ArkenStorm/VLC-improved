@@ -61,6 +61,7 @@ import org.videolan.vlc.databinding.AudioPlayerBinding
 import org.videolan.vlc.gui.AudioPlayerContainerActivity
 import org.videolan.vlc.gui.InfoActivity
 import org.videolan.vlc.gui.dialogs.CtxActionReceiver
+import org.videolan.vlc.gui.dialogs.adapters.SnoozeSongDialog
 import org.videolan.vlc.gui.dialogs.showContext
 import org.videolan.vlc.gui.helpers.PlayerOptionsDelegate
 import org.videolan.vlc.gui.helpers.SwipeDragItemTouchHelperCallback
@@ -155,7 +156,7 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
         binding.playlistSwitch.setImageResource(UiTools.getResourceFromAttribute(view.context, if (isShowingCover()) R.attr.ic_playlist else R.attr.ic_playlist_on))
         binding.timeline.setOnSeekBarChangeListener(timelineListener)
 
-        //For resizing purpose, we have to cache this twice even if it's from the same resource
+        // For resizing purpose, we have to cache this twice even if it's from the same resource
         playToPause = AnimatedVectorDrawableCompat.create(requireActivity(), R.drawable.anim_play_pause)!!
         pauseToPlay = AnimatedVectorDrawableCompat.create(requireActivity(), R.drawable.anim_pause_play)!!
         playToPauseSmall = AnimatedVectorDrawableCompat.create(requireActivity(), R.drawable.anim_play_pause)!!
@@ -218,7 +219,11 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
                 }
                 CTX_STOP_AFTER_THIS -> playlistModel.stopAfter(position)
                 CTX_INFORMATION -> showInfoDialog(playlistAdapter.getItem(position))
-                // CTX_SNOOZE_SONG -> // fixme - add pop up
+                CTX_SNOOZE_SONG -> { // fixme - add pop up
+                    val mw = playlistAdapter.getItem(position)
+                    val newFragment = SnoozeSongDialog.newInstance()
+                    newFragment.show(requireActivity().supportFragmentManager, "time")
+                }
                 // CTX_ARCHIVE_SONG -> // fixme - add functionality
                 CTX_SHARE -> lifecycleScope.launch { (requireActivity() as AppCompatActivity).share(playlistAdapter.getItem(position)) }
             }
