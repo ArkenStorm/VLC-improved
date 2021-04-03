@@ -794,5 +794,6 @@
     <string name="archive_song">Archive song</string>
     <string name="snooze_time">Snooze song for...</string>
     <string name="archive_item">%1$s has been archived from playlist</string>
+    <string name="snooze_item">%1$s has been snoozed for %2$s</string>
 
 </resources>

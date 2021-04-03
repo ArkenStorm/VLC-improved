@@ -44,12 +44,13 @@ abstract class PickTimeFragment : VLCBottomSheetDialogFragment(), View.OnClickLi
 
     private var mTextColor: Int = 0
 
+    var days = ""
     var hours = ""
     var minutes = ""
     var seconds = ""
     private var formatTime = ""
     private var pickedRawTime = ""
-    var maxTimeSize = 6
+    var maxTimeSize = 8
     private lateinit var tvTimeToJump: TextView
 
     lateinit var playbackService: PlaybackService
@@ -171,13 +172,10 @@ abstract class PickTimeFragment : VLCBottomSheetDialogFragment(), View.OnClickLi
         var tempRawTime = pickedRawTime
         formatTime = ""
 
-        if (maxTimeSize > 4) {
-            seconds = getLastNumbers(tempRawTime)
-            if (seconds !== "")
-                formatTime = seconds + "s"
-            tempRawTime = removeLastNumbers(tempRawTime)
-        } else
-            seconds = ""
+        seconds = getLastNumbers(tempRawTime)
+        if (seconds !== "")
+            formatTime = seconds + "s"
+        tempRawTime = removeLastNumbers(tempRawTime)
 
         minutes = getLastNumbers(tempRawTime)
         if (minutes !== "")
@@ -187,6 +185,11 @@ abstract class PickTimeFragment : VLCBottomSheetDialogFragment(), View.OnClickLi
         hours = getLastNumbers(tempRawTime)
         if (hours !== "")
             formatTime = hours + "h " + formatTime
+        tempRawTime = removeLastNumbers(tempRawTime)
+
+        days = getLastNumbers(tempRawTime)
+        if (days !== "")
+            formatTime = days + "d " + formatTime
 
         tvTimeToJump.text = formatTime
     }
@@ -201,5 +204,6 @@ abstract class PickTimeFragment : VLCBottomSheetDialogFragment(), View.OnClickLi
         const val SECONDS_IN_MICROS = 1000 * MILLIS_IN_MICROS
         const val MINUTES_IN_MICROS = 60 * SECONDS_IN_MICROS
         const val HOURS_IN_MICROS = 60 * MINUTES_IN_MICROS
+        const val DAYS_IN_MICROS = 24 * HOURS_IN_MICROS
     }
 }

@@ -28,38 +28,47 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.coroutines.Runnable
 import org.videolan.vlc.R
 import org.videolan.vlc.gui.dialogs.PickTimeFragment
 import org.videolan.vlc.gui.helpers.PlayerOptionsDelegate
-import org.videolan.vlc.gui.helpers.setSleep
-import java.util.*
+import org.videolan.vlc.gui.helpers.UiTools
 
 @ObsoleteCoroutinesApi
 @ExperimentalCoroutinesApi
-class SnoozeSongDialog : PickTimeFragment() {
+class SnoozeSongDialog() : PickTimeFragment() {
 
-    // FIXME - change from 'sleep' to 'snooze' functionality
-    // fix double gray background drop too?
-    // change maxTimeSize
+    // FIXME - fix double gray background drop - CS 456
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        maxTimeSize = 4
+        maxTimeSize = 8
         return view
     }
 
     override fun executeAction() {
-        val hours = if (hours != "") java.lang.Long.parseLong(hours) * HOURS_IN_MICROS else 0L
-        val minutes = if (minutes != "") java.lang.Long.parseLong(minutes) * MINUTES_IN_MICROS else 0L
-        val interval = (hours + minutes) / MILLIS_IN_MICROS //Interval in ms
-
-        if (interval < ONE_DAY_IN_MILLIS) {
-            val sleepTime = Calendar.getInstance()
-            sleepTime.timeInMillis = sleepTime.timeInMillis + interval
-            sleepTime.set(Calendar.SECOND, 0)
-            requireContext().setSleep(sleepTime)
+        // fixme - make dialog prettier - CS 456
+        var intervalMsg = ""
+        if (days != "") {
+            val days = java.lang.Long.parseLong(days) * DAYS_IN_MICROS
+            intervalMsg = (days/DAYS_IN_MICROS).toString() + "d "
         }
+        if (hours != "") {
+            val hours = java.lang.Long.parseLong(hours) * HOURS_IN_MICROS
+            intervalMsg = intervalMsg + (hours/HOURS_IN_MICROS).toString() + "h "
+        }
+        if (minutes != "") {
+            val minutes = java.lang.Long.parseLong(minutes) * MINUTES_IN_MICROS
+            intervalMsg = intervalMsg + (minutes/MINUTES_IN_MICROS).toString() + "m "
+        }
+        if (seconds != "") {
+            val seconds = java.lang.Long.parseLong(seconds) * SECONDS_IN_MICROS
+            intervalMsg = intervalMsg + (seconds/SECONDS_IN_MICROS).toString() + "s"
+        }
+
+        val message = String.format(getString(R.string.snooze_item), SONG_TITLE, intervalMsg)
+        UiTools.snackerWithCancel(requireActivity(), message, null, CANCEL_ACTION)
 
         dismiss()
     }
@@ -70,7 +79,7 @@ class SnoozeSongDialog : PickTimeFragment() {
 
     override fun onClick(v: View) {
         if (v.id == R.id.tim_pic_delete_current) {
-            requireActivity().setSleep(null)
+            //requireActivity().setSleep(null) // fixme, remove later
             dismiss()
         } else super.onClick(v)
     }
@@ -82,9 +91,12 @@ class SnoozeSongDialog : PickTimeFragment() {
     companion object {
 
         private var ONE_DAY_IN_MILLIS = (24 * 60 * 60 * 1000).toLong()
+        private var SONG_TITLE = ""
+        var CANCEL_ACTION = Runnable {}
 
-        fun newInstance(): SnoozeSongDialog {
-            return SnoozeSongDialog()
+        fun newInstance(title: String, cancelAction: Runnable) = SnoozeSongDialog().apply {
+            SONG_TITLE = title
+            CANCEL_ACTION = cancelAction
         }
     }
 }
