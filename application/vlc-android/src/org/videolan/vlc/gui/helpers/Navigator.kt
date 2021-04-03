@@ -61,8 +61,8 @@ private const val TAG = "Navigator"
 @ExperimentalCoroutinesApi
 class Navigator : BottomNavigationView.OnNavigationItemSelectedListener, LifecycleObserver, INavigator {
 
-    private val defaultFragmentId= R.id.nav_video
-    override var currentFragmentId : Int = 0
+    private val defaultFragmentId = R.id.nav_video
+    override var currentFragmentId: Int = 0
     private var currentFragment: Fragment? = null
         private set
     private lateinit var activity: MainActivity

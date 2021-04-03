@@ -84,6 +84,6 @@ class TracksProvider(val parent : MediaLibraryItem?, context: Context, model: So
         is Album -> parent.searchTracksCount(model.filterQuery)
         is Genre -> parent.searchTracksCount(model.filterQuery)
         is Playlist -> parent.searchTracksCount(model.filterQuery)
-        else ->medialibrary.getAudioCount(model.filterQuery)
+        else -> medialibrary.getAudioCount(model.filterQuery)
     }
 }

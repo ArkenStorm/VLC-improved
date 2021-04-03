@@ -84,7 +84,7 @@ public abstract class MediaWrapper extends MediaLibraryItem implements Parcelabl
     public final static int META_APPLICATION_SPECIFIC = 250;
     public final static int META_METADATA_RETRIEVED = 251;
 
-    // threshold lentgh between song and podcast ep, set to 15 minutes
+    // threshold length between song and podcast ep, set to 15 minutes
     protected static final long PODCAST_THRESHOLD = 900000L;
     protected static final long PODCAST_ABSOLUTE = 3600000L;
 

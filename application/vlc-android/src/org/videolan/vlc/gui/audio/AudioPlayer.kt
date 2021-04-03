@@ -219,12 +219,14 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
                 }
                 CTX_STOP_AFTER_THIS -> playlistModel.stopAfter(position)
                 CTX_INFORMATION -> showInfoDialog(playlistAdapter.getItem(position))
-                // fixme - improve functionality
+                // fixme - improve functionality - CS 456
                 CTX_SNOOZE_SONG -> {
                     val mw = playlistAdapter.getItem(position)
-                    val newFragment = SnoozeSongDialog.newInstance()
+                    val cancelAction = Runnable { playlistModel.insertMedia(position, mw) }
+                    val newFragment = SnoozeSongDialog.newInstance(mw.title, cancelAction)
                     newFragment.show(requireActivity().supportFragmentManager, "time")
                 }
+                // fixme - improve functionality - CS 456
                 CTX_ARCHIVE_SONG -> {
                     val mw = playlistAdapter.getItem(position)
                     val cancelAction = Runnable { playlistModel.insertMedia(position, mw) }
@@ -245,7 +247,7 @@ class AudioPlayer : Fragment(), PlaylistAdapter.IPlayer, TextWatcher, IAudioPlay
     override fun onPopupMenu(view: View, position: Int, item: MediaWrapper?) {
         val activity = activity
         if (activity === null || position >= playlistAdapter.itemCount) return
-        // fixme - put here or on next line?
+        // fixme - put here or on next line? - CS 456
         var flags = CTX_REMOVE_FROM_PLAYLIST or CTX_STOP_AFTER_THIS or CTX_INFORMATION or CTX_SNOOZE_SONG or CTX_ARCHIVE_SONG
         if (item?.uri?.scheme != "content") flags = flags or CTX_ADD_TO_PLAYLIST or CTX_SHARE
         showContext(activity, ctxReceiver, position, item?.title ?: "", flags)
