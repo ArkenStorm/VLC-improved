@@ -60,6 +60,8 @@ fun MedialibraryViewModel.prepareOptionsMenu(menu: Menu) {
     menu.findItem(R.id.ml_menu_sortby_artist_name).isVisible = canSortByArtist()
     menu.findItem(R.id.ml_menu_sortby_album_name).isVisible = canSortByAlbum()
     menu.findItem(R.id.ml_menu_sortby_length).isVisible = canSortByDuration()
+    menu.findItem(R.id.ml_menu_sortby_frequency_least).isVisible = true //canSortByPlayCount(); // fixme - cs 356 - playcount
+    menu.findItem(R.id.ml_menu_sortby_frequency_most).isVisible = true //canSortByPlayCount(); // fixme - cs 356 - playcount
     menu.findItem(R.id.ml_menu_sortby_date).isVisible = canSortByReleaseDate()
     menu.findItem(R.id.ml_menu_sortby_last_modified).isVisible = canSortByLastModified()
     menu.findItem(R.id.ml_menu_sortby_media_number).isVisible = canSortByMediaNumber()

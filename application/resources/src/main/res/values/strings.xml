@@ -4,7 +4,7 @@
     <!-- Main VLC Interface -->
     <string name="ok">OK</string>
     <string name="cancel">Undo</string>
-    <string name="app_name" translatable="false">VLC</string>
+    <string name="app_name" translatable="false">Media Player</string>
     <string name="other">Other</string>
     <string name="sortby">Sort by…</string>
     <string name="sortby_name">Name</string>
@@ -13,6 +13,8 @@
     <string name="sortby_album_name">Album name</string>
     <string name="sortby_length">Length</string>
     <string name="sortby_date">Date</string>
+    <string name="sortby_frequency_least">Least Frequently Played</string>
+    <string name="sortby_frequency_most">Most Frequently Played</string>
     <string name="sortby_last_modified_date">Recently added</string>
     <string name="sortby_media_number">Media number</string>
     <string name="sortby_number">Nb tracks</string>

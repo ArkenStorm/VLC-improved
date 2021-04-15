@@ -187,6 +187,8 @@ open class PlaylistActivity : AudioPlayerContainerActivity(), IEventsHandler<Med
         menu.findItem(R.id.ml_menu_sortby_filename).isVisible = viewModel.canSortByFileNameName()
         menu.findItem(R.id.ml_menu_sortby_artist_name).isVisible = viewModel.canSortByArtist()
         menu.findItem(R.id.ml_menu_sortby_length).isVisible = viewModel.canSortByDuration()
+        menu.findItem(R.id.ml_menu_sortby_frequency_least).isVisible = true //viewModel.canSortByPlayCount(); // fixme - cs 356 - playcount
+        menu.findItem(R.id.ml_menu_sortby_frequency_most).isVisible = true // viewModel.canSortByPlayCount(); // fixme - cs 356 - playcount
         menu.findItem(R.id.ml_menu_sortby_date).isVisible = viewModel.canSortByReleaseDate()
         menu.findItem(R.id.ml_menu_sortby_last_modified).isVisible = viewModel.canSortByLastModified()
         return true

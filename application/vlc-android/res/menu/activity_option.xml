@@ -78,6 +78,16 @@
                     android:title="@string/sortby_length"
                     android:visible="false"/>
             <item
+                android:orderInCategory="2"
+                android:id="@+id/ml_menu_sortby_frequency_least"
+                android:title="@string/sortby_frequency_least"
+                android:visible="true" />
+            <item
+                android:orderInCategory="2"
+                android:id="@+id/ml_menu_sortby_frequency_most"
+                android:title="@string/sortby_frequency_most"
+                android:visible="true" />
+            <item
                     android:orderInCategory="2"
                     android:id="@+id/ml_menu_sortby_date"
                     android:title="@string/sortby_date"

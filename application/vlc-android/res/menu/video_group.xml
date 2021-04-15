@@ -17,6 +17,12 @@
                 android:id="@+id/ml_menu_sortby_length"
                 android:title="@string/sortby_length" />
             <item
+                android:id="@+id/ml_menu_sortby_frequency_least"
+                android:title="@string/sortby_frequency_least" />
+            <item
+                android:id="@+id/ml_menu_sortby_frequency_most"
+                android:title="@string/sortby_frequency_most" />
+            <item
                 android:id="@+id/ml_menu_sortby_date"
                 android:title="@string/sortby_date" />
             <item

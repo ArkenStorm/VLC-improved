@@ -231,7 +231,7 @@ interface SortModule {
         SORT_FILESIZE -> canSortByFileSize()
         SORT_ARTIST -> canSortByArtist()
         SORT_ALBUM -> canSortByAlbum()
-        SORT_PLAYCOUNT -> canSortByPlayCount()
+        SORT_PLAYCOUNT -> canSortByPlayCount() // fixme - cs 356 - playcount
         TrackId -> canSortByTrackId()
         NbMedia -> canSortByMediaNumber()
         else -> false
