@@ -30,15 +30,15 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.Runnable
 import org.videolan.vlc.R
-import org.videolan.vlc.gui.dialogs.PickTimeFragment
+import org.videolan.vlc.gui.dialogs.PickSnoozeTimeFragment
 import org.videolan.vlc.gui.helpers.PlayerOptionsDelegate
 import org.videolan.vlc.gui.helpers.UiTools
 
 @ObsoleteCoroutinesApi
 @ExperimentalCoroutinesApi
-class SnoozeSongDialog() : PickTimeFragment() {
+class SnoozeSongDialog() : PickSnoozeTimeFragment() {
 
-    // FIXME - fix double gray background drop - CS 456
+    // FIXME - fix double gray background drop - CS 356
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -47,26 +47,8 @@ class SnoozeSongDialog() : PickTimeFragment() {
         return view
     }
 
-    override fun executeAction() {
-        // fixme - make dialog prettier - CS 456
-        var intervalMsg = ""
-        if (days != "") {
-            val days = java.lang.Long.parseLong(days) * DAYS_IN_MICROS
-            intervalMsg = (days/DAYS_IN_MICROS).toString() + "d "
-        }
-        if (hours != "") {
-            val hours = java.lang.Long.parseLong(hours) * HOURS_IN_MICROS
-            intervalMsg = intervalMsg + (hours/HOURS_IN_MICROS).toString() + "h "
-        }
-        if (minutes != "") {
-            val minutes = java.lang.Long.parseLong(minutes) * MINUTES_IN_MICROS
-            intervalMsg = intervalMsg + (minutes/MINUTES_IN_MICROS).toString() + "m "
-        }
-        if (seconds != "") {
-            val seconds = java.lang.Long.parseLong(seconds) * SECONDS_IN_MICROS
-            intervalMsg = intervalMsg + (seconds/SECONDS_IN_MICROS).toString() + "s"
-        }
-
+    override fun executeAction(action: String) {
+        var intervalMsg = action; // fixme - cs 356 - add Custom... check and functionality
         val message = String.format(getString(R.string.snooze_item), SONG_TITLE, intervalMsg)
         UiTools.snackerWithCancel(requireActivity(), message, null, CANCEL_ACTION)
 
