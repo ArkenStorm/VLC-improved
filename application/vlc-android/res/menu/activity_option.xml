@@ -110,6 +110,29 @@
         </menu>
     </item>
     <item
+        android:orderInCategory="2"
+        android:title="@string/shuffleby"
+        android:icon="@drawable/ic_menu_sort"
+        android:contentDescription="@string/sortby"
+        android:id="@+id/ml_menu_shuffle_by"
+        vlc:showAsAction="ifRoom|collapseActionView"
+        android:visible="true">
+        <menu>
+            <item
+                android:orderInCategory="2"
+                android:id="@+id/ml_menu_shuffleby_least"
+                android:title="@string/shuffleby_least"/>
+            <item
+                android:orderInCategory="2"
+                android:id="@+id/ml_menu_shuffleby_most"
+                android:title="@string/shuffleby_most"/>
+            <item
+                android:orderInCategory="2"
+                android:id="@+id/ml_menu_shuffleby_random"
+                android:title="@string/shuffleby_random"/>
+        </menu>
+    </item>
+    <item
             android:orderInCategory="2"
             android:title="@string/video_min_group_length_title"
             android:id="@+id/ml_menu_video_group"
