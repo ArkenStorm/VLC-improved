@@ -78,4 +78,30 @@
                     android:visible="false" />
         </menu>
     </item>
+    <item
+        android:orderInCategory="1"
+        android:title="@string/shuffleby"
+        android:icon="@drawable/ic_shuffle"
+        android:contentDescription="@string/shuffleby"
+        android:id="@+id/ml_menu_shuffle_by"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:visible="true">
+        <menu>
+            <item
+                android:orderInCategory="1"
+                android:id="@+id/ml_menu_shuffleby_least"
+                android:title="@string/shuffleby_least"
+                android:visible="true"/>
+            <item
+                android:orderInCategory="1"
+                android:id="@+id/ml_menu_shuffleby_most"
+                android:title="@string/shuffleby_most"
+                android:visible="true"/>
+            <item
+                android:orderInCategory="1"
+                android:id="@+id/ml_menu_shuffleby_random"
+                android:title="@string/shuffleby_random"
+                android:visible="true"/>
+        </menu>
+    </item>
 </menu>
