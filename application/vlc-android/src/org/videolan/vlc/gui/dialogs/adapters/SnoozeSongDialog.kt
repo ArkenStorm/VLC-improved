@@ -48,7 +48,20 @@ class SnoozeSongDialog() : PickSnoozeTimeFragment() {
     }
 
     override fun executeAction(action: String) {
-        var intervalMsg = action; // fixme - cs 356 - add Custom... check and functionality
+        var intervalMsg = action; // fixme - cs 356 - check for Custom... and add functionality
+        /* TODO - KEEP FOR CUSTOM...
+        if (days != "") {
+            val days = java.lang.Long.parseLong(days) * DAYS_IN_MICROS
+            intervalMsg = (days/DAYS_IN_MICROS).toString() + "d "
+        }
+        if (hours != "") {
+            val hours = java.lang.Long.parseLong(hours) * HOURS_IN_MICROS
+            intervalMsg = intervalMsg + (hours/HOURS_IN_MICROS).toString() + "d "
+        }
+        if (minutes != "") {
+            val minutes = java.lang.Long.parseLong(minutes) * MINUTES_IN_MICROS
+            intervalMsg = intervalMsg + (minutes/MINUTES_IN_MICROS).toString() + "h "
+        }*/
         val message = String.format(getString(R.string.snooze_item), SONG_TITLE, intervalMsg)
         UiTools.snackerWithCancel(requireActivity(), message, null, CANCEL_ACTION)
 
