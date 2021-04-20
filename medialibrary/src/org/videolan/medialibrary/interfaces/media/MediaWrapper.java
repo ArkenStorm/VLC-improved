@@ -123,6 +123,7 @@ public abstract class MediaWrapper extends MediaLibraryItem implements Parcelabl
     protected int mFlags = 0;
     protected long mLastModified = 0L;
     protected IMedia.Slave[] mSlaves = null;
+    protected long playCount;
 
     protected long mSeen = 0L;
 
@@ -660,6 +661,14 @@ public abstract class MediaWrapper extends MediaLibraryItem implements Parcelabl
 
     public void removeFlags(int flags) {
         mFlags &= ~flags;
+    }
+
+    public long getPlayCount() {
+        return playCount;
+    }
+
+    public void setPlayCount(long playCount) {
+        this.playCount = playCount;
     }
 
     @Nullable

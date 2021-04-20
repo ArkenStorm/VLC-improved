@@ -19,6 +19,7 @@
  */
 package org.videolan.vlc.gui.helpers
 
+
 import org.videolan.medialibrary.interfaces.media.MediaWrapper
 import java.util.*
 
@@ -33,5 +34,21 @@ object MediaComparators {
         else
             0
     }
+
+//    val BY_LEAST_PLAYED: Comparator<MediaWrapper> = Comparator { m1, m2 ->
+//        if (m1.playCount < m2.playCount) return@Comparator -1
+//        if (m1.playCount > m2.playCount)
+//            1
+//        else
+//            0
+//    }
+//
+//    val BY_MOST_PLAYED: Comparator<MediaWrapper> = Comparator { m1, m2 ->
+//        if (m1.playCount > m2.playCount) return@Comparator -1
+//        if (m1.playCount < m2.playCount)
+//            1
+//        else
+//            0
+//    }
 
 }
